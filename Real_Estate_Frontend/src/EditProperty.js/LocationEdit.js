@@ -7,6 +7,7 @@ import Sidebar from '../componants/Sidebar';
 import Nav from '../componants/Nav';
 import Loader from "../componants/Add_property/Loader";
 import PageIndicator from '../componants/Add_property/PageIndicator';
+import Side from '../componants/Add_property/side';
 
 
 
@@ -51,15 +52,18 @@ export default function LocationEdit({ SetPage }) {
 
 
     return <div className="router">
-        {loader ? <Loader /> : <div>
+        {loader ? <Loader /> : <>
 
-            <div className="Sidebar"> <Sidebar />
-
-            </div>
+            <div className="Sidebar"> <Side /> </div>
             <div className="second_wrapper">
                 <div className="Nav"><Nav /></div>
                 <div>
+                    <div className='PageIndicator'>
+
                     <PageIndicator />
+                    </div>
+                    <div className='menu'>
+
                     <form className="outer_form" onSubmit={(event) => {
                         event.preventDefault();
                         handleSubmit();
@@ -82,7 +86,7 @@ export default function LocationEdit({ SetPage }) {
                                 <br />
                                 <label htmlFor="addressarea">Area</label>
                                 <br />
-                                <select id="addressarea" onChange={(e) => {
+                                <select id="addressarea" className='select-box' onChange={(e) => {
                                     SetnewData({
                                         ...newData,
                                         addressarea: e.target.value
@@ -120,7 +124,7 @@ export default function LocationEdit({ SetPage }) {
                             <div className="form_second">
                                 <label htmlFor="city">City</label>
                                 <br />
-                                <select id="city" onChange={(e) => {
+                                <select id="city" className='select-box' onChange={(e) => {
                                     SetnewData({
                                         ...newData,
                                         city: e.target.value
@@ -135,7 +139,7 @@ export default function LocationEdit({ SetPage }) {
 
                                 <label htmlFor="pincode">Pincode</label>
                                 <br />
-                                <select id="pincode" onChange={(e) => {
+                                <select id="pincode" className='select-box' onChange={(e) => {
                                     SetnewData({
                                         ...newData,
                                         pincode: e.target.value
@@ -184,9 +188,10 @@ export default function LocationEdit({ SetPage }) {
                                 }} >Add Property</button>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
         }
     </div>
 }

@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useContext } from "react"
 import { PropertyContext } from "../componants/Add_property/ContextProvider";
-import Sidebar from '../componants/Sidebar';
 import Nav from '../componants/Nav';
 import { IoCameraSharp } from "react-icons/io5";
 import PageIndicator from '../componants/Add_property/PageIndicator';
+import Side from "../componants/Add_property/side";
 
 
 export default function GeneralEdit({ SetPage }) {
@@ -14,13 +14,18 @@ export default function GeneralEdit({ SetPage }) {
 
 
     return <div className="router">
-        <div className="Sidebar"> <Sidebar />
+        <div className="Sidebar"> <Side />
 
         </div>
         <div className="second_wrapper">
             <div className="Nav"><Nav /></div>
             <div>
+                <div className="PageIndicator" >
+
                 <PageIndicator />
+                </div>
+                <div className="menu">
+
                 <form className="outer_form" >
                     <div className="form">
 
@@ -39,7 +44,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
                             <label htmlFor="postedby">Posted By</label>
                             <br />
-                            <select id="postedby" onChange={(e) => {
+                            <select id="postedby" className='select-box' onChange={(e) => {
                                 SetnewData({
                                     ...newData,
                                     postedby: e.target.value
@@ -54,7 +59,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
                             <label htmlFor="featured">Featured Package</label>
                             <br />
-                            <select id="featured" onChange={(e) => {
+                            <select id="featured" className='select-box' onChange={(e) => {
                                 SetnewData({
                                     ...newData,
                                     featured: e.target.value
@@ -102,7 +107,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
                             <label htmlFor="saletype">Sale Type</label>
                             <br />
-                            <select id="saletype" onChange={(e) => {
+                            <select id="saletype" className='select-box' onChange={(e) => {
                                 SetnewData({
                                     ...newData,
                                     saletype: e.target.value
@@ -116,7 +121,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
                             <label htmlFor="ppdpackage">PPD Package</label>
                             <br />
-                            <select id="ppdpackage" onChange={(e) => {
+                            <select id="ppdpackage" className='select-box' onChange={(e) => {
                                 SetnewData({
                                     ...newData,
                                     ppdpackage: e.target.value
@@ -148,6 +153,7 @@ export default function GeneralEdit({ SetPage }) {
                         }} >Save & Next</button>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     </div>

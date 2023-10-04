@@ -8,9 +8,10 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import PageIndicator from "./PageIndicator";
 import { OnClickLocation_info } from "./OnClickLogic";
-import Sidebar from "../Sidebar";
+
 import Nav from "../Nav";
 import Loader from "./Loader";
+import Side from "./side";
 
 
 
@@ -31,7 +32,7 @@ export default function Location() {
         const data = AddProperty
         Setloader(true);
         try {
-// console.log(process.env.REACT_APP_BASE_URL}/prop/addproperty)
+
             let res = await axios.post(`${process.env.REACT_APP_BASE_URL}/prop/addproperty`, data, {
                 headers: {
                     "Authorization": token,
@@ -40,13 +41,9 @@ export default function Location() {
             })
             if (res.status == 200) {
 
-                // SetBasicDetail("");
-                // SetGeneral_info("");
-                // SetLocation_info("");
-                // SetAddProperty("");
                 alert("Data Saved sucessFully");
                 navigate('/home')
-            //    window.location.reload();
+        
 
             } else {
                 Setloader(false)
@@ -68,11 +65,8 @@ export default function Location() {
     }
 
     return <div className="router">
-        {loader ? <Loader /> : <div>
-            <div className="Sidebar">
-                <Sidebar />
-
-            </div>
+        {loader ? <Loader /> : <>
+            <div className="Sidebar"><Side/> </div>
             <div className="second_wrapper">
                 <div className="Nav"><Nav /></div>
                 <div>
@@ -97,7 +91,7 @@ export default function Location() {
                                 <br />
                                 <label htmlFor="addressarea">Area</label>
                                 <br />
-                                <select id="addressarea" onChange={(e) => {
+                                <select id="addressarea" className='select-box' onChange={(e) => {
                                     OnClickLocation_info(e, "addressarea", Location_info, SetLocation_info, AddProperty, SetAddProperty)
                                 }}
                                     value={Location_info.addressarea}  >
@@ -126,7 +120,7 @@ export default function Location() {
                             <div className="form_second">
                                 <label htmlFor="city">City</label>
                                 <br />
-                                <select id="city" onChange={(e) => {
+                                <select id="city" className='select-box' onChange={(e) => {
                                     OnClickLocation_info(e, "city", Location_info, SetLocation_info, AddProperty, SetAddProperty)
                                 }} required
                                     value={Location_info.city} >
@@ -139,7 +133,7 @@ export default function Location() {
 
                                 <label htmlFor="pincode">Pincode</label>
                                 <br />
-                                <select id="pincode" onChange={(e) => {
+                                <select id="pincode" className='select-box' onChange={(e) => {
                                     OnClickLocation_info(e, "pincode", Location_info, SetLocation_info, AddProperty, SetAddProperty)
                                 }} required
                                     value={Location_info.pincode} >
@@ -178,6 +172,6 @@ export default function Location() {
                     </form>
                 </div>
             </div>
-        </div>}
+        </>}
     </div>
 } 
