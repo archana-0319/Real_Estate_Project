@@ -1,4 +1,9 @@
 
+"multer": "^1.4.5-lts.1",
+    "multer-gridfs-storage": "^5.0.2",
+    "gridfs-stream": "^1.1.1",
+
+
 --------------- Frontend --------------------------
 Frontend part consists of HTML5 and Bootstrap4 for layouting purpose alongside jQuery library as a dependency manager. The frontend code resides inside `public
 frontend project structure for real estate
